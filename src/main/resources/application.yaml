@@ -1,3 +1,7 @@
 spring:
   application:
     name: SpringAiCode
+
+  ai:
+    openai:
+      api-key: ${spring-ai-demo}
