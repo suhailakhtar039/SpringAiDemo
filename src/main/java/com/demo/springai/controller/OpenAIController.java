@@ -32,8 +32,15 @@ public class OpenAIController {
 
     @GetMapping("/api/{message}")
     public ResponseEntity<String> getAnswer(@PathVariable String message) {
+        String conversationId = "user-1";
+
         ChatResponse chatResponse = chatClient
-                .prompt(message)
+                .prompt()
+                .user(message)
+                .advisors(a -> a.param(
+                        ChatMemory.CONVERSATION_ID,
+                        conversationId
+                ))
                 .call()
                 .chatResponse();
 
