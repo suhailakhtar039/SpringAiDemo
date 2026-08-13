@@ -18,17 +18,17 @@ public class OpenAIController {
     ChatMemory chatMemory = MessageWindowChatMemory
             .builder()
             .build();
-//    public OpenAIController(OpenAiChatModel chatModel) {
-//        this.chatClient = ChatClient.create(chatModel);
-//    }
-
-    public OpenAIController(ChatClient.Builder builder) {
-        this.chatClient = builder
-                .defaultAdvisors(MessageChatMemoryAdvisor
-                        .builder(chatMemory)
-                        .build())
-                .build();
+    public OpenAIController(OpenAiChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
+
+//    public OpenAIController(ChatClient.Builder builder) {
+//        this.chatClient = builder
+//                .defaultAdvisors(MessageChatMemoryAdvisor
+//                        .builder(chatMemory)
+//                        .build())
+//                .build();
+//    }
 
     @GetMapping("/api/{message}")
     public ResponseEntity<String> getAnswer(@PathVariable String message) {
