@@ -5,6 +5,7 @@ import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,17 +18,17 @@ public class OllamaController {
     ChatMemory chatMemory = MessageWindowChatMemory
             .builder()
             .build();
-//    public OpenAIController(OpenAiChatModel chatModel) {
-//        this.chatClient = ChatClient.create(chatModel);
-//    }
-
-    public OllamaController(ChatClient.Builder builder) {
-        this.chatClient = builder
-                .defaultAdvisors(MessageChatMemoryAdvisor
-                        .builder(chatMemory)
-                        .build())
-                .build();
+    public OllamaController(OpenAiChatModel chatModel) {
+        this.chatClient = ChatClient.create(chatModel);
     }
+
+//    public OllamaController(ChatClient.Builder builder) {
+//        this.chatClient = builder
+//                .defaultAdvisors(MessageChatMemoryAdvisor
+//                        .builder(chatMemory)
+//                        .build())
+//                .build();
+//    }
 
     @GetMapping("/api/{message}")
     public ResponseEntity<String> getAnswer(@PathVariable String message) {
