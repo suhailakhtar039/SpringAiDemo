@@ -86,4 +86,6 @@ public class OpenAIController {
 
         return dotProduct * 100.00 / (Math.sqrt(norm1) * Math.sqrt(norm2));
     }
+
+
 }
