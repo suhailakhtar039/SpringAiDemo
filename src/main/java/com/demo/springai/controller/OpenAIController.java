@@ -4,8 +4,10 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.openai.OpenAiChatModel;
+import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class OpenAIController {
 
@@ -23,6 +27,9 @@ public class OpenAIController {
     @Autowired
     @Qualifier("openAiEmbeddingModel")
     private EmbeddingModel embeddingModel;
+
+    @Autowired
+    private VectorStore vectorStore;
 
     ChatMemory chatMemory = MessageWindowChatMemory
             .builder()
@@ -87,5 +94,9 @@ public class OpenAIController {
         return dotProduct * 100.00 / (Math.sqrt(norm1) * Math.sqrt(norm2));
     }
 
+    @PostMapping("/api/product")
+    public List<Document> getProducts(@RequestParam String text) {
+        return vectorStore.similaritySearch(text);
+    }
 
 }
