@@ -84,6 +84,6 @@ public class OpenAIController {
             norm2 += Math.pow(embedding2[i], 2);
         }
 
-        return dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
+        return dotProduct * 100.00 / (Math.sqrt(norm1) * Math.sqrt(norm2));
     }
 }
