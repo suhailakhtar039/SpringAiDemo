@@ -80,8 +80,8 @@ public class OpenAIController {
 
         for (int i = 0; i < embedding1.length; i++) {
             dotProduct += embedding1[i] * embedding2[i];
-            norm1 = Math.pow(embedding1[i], 2);
-            norm2 = Math.pow(embedding2[i], 2);
+            norm1 += Math.pow(embedding1[i], 2);
+            norm2 += Math.pow(embedding2[i], 2);
         }
 
         return dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
