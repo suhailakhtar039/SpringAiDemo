@@ -21,11 +21,11 @@ public class DataInitializer {
     public void initData(){
         TextReader textReader = new TextReader(new ClassPathResource("product_details.txt"));
         TokenTextSplitter splitter = TokenTextSplitter.builder()
-                .withChunkSize(500)
+                .withChunkSize(100)
                 .withMinChunkSizeChars(30)
-                .withMinChunkLengthToEmbed(20)
+                .withMinChunkLengthToEmbed(5)
                 .withMaxNumChunks(500)
-                .withKeepSeparator(true)
+                .withKeepSeparator(false)
                 .build();
 
         List<Document> documents = splitter.split(textReader.get());
