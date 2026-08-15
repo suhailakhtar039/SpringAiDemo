@@ -7,6 +7,7 @@ import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.openai.OpenAiChatModel;
+import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -96,7 +97,8 @@ public class OpenAIController {
 
     @PostMapping("/api/product")
     public List<Document> getProducts(@RequestParam String text) {
-        return vectorStore.similaritySearch(text);
+//        return vectorStore.similaritySearch(text);
+        return vectorStore.similaritySearch(SearchRequest.builder().query(text).topK(2).build());
     }
 
 }
