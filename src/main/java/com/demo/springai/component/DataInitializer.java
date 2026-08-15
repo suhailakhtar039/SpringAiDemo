@@ -25,7 +25,7 @@ public class DataInitializer {
                 .withMinChunkSizeChars(30)
                 .withMinChunkLengthToEmbed(20)
                 .withMaxNumChunks(500)
-                .withKeepSeparator(false)
+                .withKeepSeparator(true)
                 .build();
 
         List<Document> documents = splitter.split(textReader.get());
