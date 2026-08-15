@@ -12,5 +12,8 @@ spring:
     password: suhail
     driver-class-name: org.postgresql.Driver
 
+  main:
+    allow-bean-definition-overriding: true
+
   jpa:
     show-sql: true
