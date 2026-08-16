@@ -101,4 +101,12 @@ public class OpenAIController {
         return vectorStore.similaritySearch(SearchRequest.builder().query(text).topK(2).build());
     }
 
+    @PostMapping("/api/ask")
+    public String getAnswerUsingReq(@RequestParam String query){
+        return chatClient
+                .prompt(query)
+                .call()
+                .content();
+    }
+
 }
