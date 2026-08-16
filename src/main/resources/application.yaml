@@ -17,3 +17,8 @@ spring:
 
   jpa:
     show-sql: true
+
+  sql:
+    init:
+      schema-locations: classpath:init/schema.sql
+      mode: always
