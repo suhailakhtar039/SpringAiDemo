@@ -5,7 +5,15 @@ spring:
   ai:
     openai:
       api-key: ${spring-ai-demo}
+    vectorstore:
+      redis:
+        index-name: product-index
+        prefix: product
 
+  data:
+    redis:
+      host: localhost
+      port: 6379
 #  datasource:
 #    url: jdbc:postgresql://localhost:5432/suhail
 #    username: postgres
