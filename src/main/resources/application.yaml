@@ -6,17 +6,17 @@ spring:
     openai:
       api-key: ${spring-ai-demo}
 
-  datasource:
-    url: jdbc:postgresql://localhost:5432/suhail
-    username: postgres
-    password: suhail
-    driver-class-name: org.postgresql.Driver
-
-  main:
-    allow-bean-definition-overriding: true
-
-  jpa:
-    show-sql: true
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/suhail
+#    username: postgres
+#    password: suhail
+#    driver-class-name: org.postgresql.Driver
+#
+#  main:
+#    allow-bean-definition-overriding: true
+#
+#  jpa:
+#    show-sql: true
 
   sql:
     init:
