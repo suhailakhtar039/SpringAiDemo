@@ -9,6 +9,9 @@ spring:
       redis:
         index-name: product-index
         prefix: product
+        initialize-schema: true
+        distance-metric: COSINE
+        vector-algorithm: HNSW
 
   data:
     redis:
@@ -20,8 +23,8 @@ spring:
 #    password: suhail
 #    driver-class-name: org.postgresql.Driver
 #
-#  main:
-#    allow-bean-definition-overriding: true
+  main:
+    allow-bean-definition-overriding: true
 #
 #  jpa:
 #    show-sql: true
