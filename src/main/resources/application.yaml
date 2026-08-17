@@ -5,6 +5,11 @@ spring:
   ai:
     openai:
       api-key: ${spring-ai-demo}
+
+      embedding:
+        options:
+          model: text-embedding-3-large
+
     vectorstore:
       redis:
         index-name: product-index
@@ -17,17 +22,9 @@ spring:
     redis:
       host: localhost
       port: 6379
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/suhail
-#    username: postgres
-#    password: suhail
-#    driver-class-name: org.postgresql.Driver
-#
+
   main:
     allow-bean-definition-overriding: true
-#
-#  jpa:
-#    show-sql: true
 
   sql:
     init:
