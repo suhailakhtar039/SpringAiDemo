@@ -1,8 +1,10 @@
 package com.demo.springai.controller;
 
+import com.openai.models.audio.AudioResponseFormat;
 import org.springframework.ai.audio.transcription.AudioTranscriptionPrompt;
 import org.springframework.ai.audio.transcription.AudioTranscriptionResponse;
 import org.springframework.ai.openai.OpenAiAudioTranscriptionModel;
+import org.springframework.ai.openai.OpenAiAudioTranscriptionOptions;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,8 +21,15 @@ public class AudioGenController {
 
     @PostMapping("/api/stt")
     public String speechToText(@RequestParam MultipartFile file) {
+
+        OpenAiAudioTranscriptionOptions options =
+                OpenAiAudioTranscriptionOptions.builder()
+                        .responseFormat(AudioResponseFormat.SRT)
+                        .build();
+
         AudioTranscriptionPrompt transcriptionPrompt =
-                new AudioTranscriptionPrompt(file.getResource());
+                new AudioTranscriptionPrompt(file.getResource(), options);
+
         AudioTranscriptionResponse response = audioModel.call(transcriptionPrompt);
         return response
                 .getResult()
