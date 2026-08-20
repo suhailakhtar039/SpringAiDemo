@@ -43,7 +43,7 @@ public class AudioGenController {
     }
 
     @PostMapping("api/tts")
-    public byte[] tts(@RequestParam String text){
+    public byte[] ttss(@RequestParam String text){
         return audioSpeechModel.call(text);
     }
 
